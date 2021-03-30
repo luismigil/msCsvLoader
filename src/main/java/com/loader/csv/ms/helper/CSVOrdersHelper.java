@@ -13,6 +13,7 @@ import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
 
+import com.loader.csv.ms.enums.CSVFILE;
 import com.loader.csv.ms.model.Orders;
 
 public class CSVOrdersHelper {
@@ -29,20 +30,20 @@ public class CSVOrdersHelper {
 			
 			for(CSVRecord csvRecord : csvRecords) {
 				Orders order = new Orders(
-						Long.parseLong(csvRecord.get("Order ID")),
-						csvRecord.get("Region"),
-						csvRecord.get("Country"),
-						csvRecord.get("Item Type"),
-						csvRecord.get("Sales Channel"),
-						csvRecord.get("Order Priority"),
-						sdf.parse(csvRecord.get("Order Date")),
-						sdf.parse(csvRecord.get("Ship Date")),
-						Integer.parseInt(csvRecord.get("Units Sold")),
-						Float.parseFloat(csvRecord.get("Unit Price")),
-						Float.parseFloat(csvRecord.get("Unit Cost")),
-						Float.parseFloat(csvRecord.get("Total Revenue")),
-						Float.parseFloat(csvRecord.get("Total Cost")),
-						Float.parseFloat(csvRecord.get("total Profit"))
+						Long.parseLong(csvRecord.get(CSVFILE.ORDER_ID_HEADER.value)),
+						csvRecord.get(CSVFILE.REGION_HEADER.value),
+						csvRecord.get(CSVFILE.COUNTRY_HEADER.value),
+						csvRecord.get(CSVFILE.ITEM_TYPE_HEADER.value),
+						csvRecord.get(CSVFILE.SALES_CHANNEL_HEADER.value),
+						csvRecord.get(CSVFILE.ORDER_PRIORITY_HEADER.value),
+						sdf.parse(csvRecord.get(CSVFILE.ORDER_DATE_HEADER.value)),
+						sdf.parse(csvRecord.get(CSVFILE.SHIP_DATE_HEADER.value)),
+						Integer.parseInt(csvRecord.get(CSVFILE.UNITS_SOLD_HEADER.value)),
+						Float.parseFloat(csvRecord.get(CSVFILE.UNIT_PRICE_HEADER.value)),
+						Float.parseFloat(csvRecord.get(CSVFILE.UNIT_COST_HEADER.value)),
+						Float.parseFloat(csvRecord.get(CSVFILE.TOTAL_REVENUE_HEADER.value)),
+						Float.parseFloat(csvRecord.get(CSVFILE.TOTAL_COST_HEADER.value)),
+						Float.parseFloat(csvRecord.get(CSVFILE.TOTAL_PROFIT_HEADER.value))
 						);
 				
 				orders.add(order);
