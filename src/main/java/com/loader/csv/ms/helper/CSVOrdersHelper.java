@@ -29,22 +29,21 @@ public class CSVOrdersHelper {
 			Iterable<CSVRecord> csvRecords = csvParser.getRecords();
 			
 			for(CSVRecord csvRecord : csvRecords) {
-				Orders order = new Orders(
-						Long.parseLong(csvRecord.get(CSVFILE.ORDER_ID_HEADER.value)),
-						csvRecord.get(CSVFILE.REGION_HEADER.value),
-						csvRecord.get(CSVFILE.COUNTRY_HEADER.value),
-						csvRecord.get(CSVFILE.ITEM_TYPE_HEADER.value),
-						csvRecord.get(CSVFILE.SALES_CHANNEL_HEADER.value),
-						csvRecord.get(CSVFILE.ORDER_PRIORITY_HEADER.value),
-						sdf.parse(csvRecord.get(CSVFILE.ORDER_DATE_HEADER.value)),
-						sdf.parse(csvRecord.get(CSVFILE.SHIP_DATE_HEADER.value)),
-						Integer.parseInt(csvRecord.get(CSVFILE.UNITS_SOLD_HEADER.value)),
-						Float.parseFloat(csvRecord.get(CSVFILE.UNIT_PRICE_HEADER.value)),
-						Float.parseFloat(csvRecord.get(CSVFILE.UNIT_COST_HEADER.value)),
-						Float.parseFloat(csvRecord.get(CSVFILE.TOTAL_REVENUE_HEADER.value)),
-						Float.parseFloat(csvRecord.get(CSVFILE.TOTAL_COST_HEADER.value)),
-						Float.parseFloat(csvRecord.get(CSVFILE.TOTAL_PROFIT_HEADER.value))
-						);
+				Orders order = new Orders.Builder(Long.parseLong(csvRecord.get(CSVFILE.ORDER_ID_HEADER.value)))
+						.region(csvRecord.get(CSVFILE.REGION_HEADER.value))
+						.country(csvRecord.get(CSVFILE.COUNTRY_HEADER.value))
+						.itemType(csvRecord.get(CSVFILE.ITEM_TYPE_HEADER.value))
+						.salesChannel(csvRecord.get(CSVFILE.SALES_CHANNEL_HEADER.value))
+						.orderPriority(CSVFILE.ORDER_PRIORITY_HEADER.value)
+						.orderDate(sdf.parse(csvRecord.get(CSVFILE.ORDER_DATE_HEADER.value)))
+						.shipDate(sdf.parse(csvRecord.get(CSVFILE.SHIP_DATE_HEADER.value)))
+						.unitsSold(Integer.parseInt(csvRecord.get(CSVFILE.UNITS_SOLD_HEADER.value)))
+						.unitPrice(Float.parseFloat(csvRecord.get(CSVFILE.UNIT_PRICE_HEADER.value)))
+						.unitCost(Float.parseFloat(csvRecord.get(CSVFILE.UNIT_COST_HEADER.value)))
+						.totalRevenue(Float.parseFloat(csvRecord.get(CSVFILE.TOTAL_REVENUE_HEADER.value)))
+						.totalCost(Float.parseFloat(csvRecord.get(CSVFILE.TOTAL_COST_HEADER.value)))
+						.totalProfit(Float.parseFloat(csvRecord.get(CSVFILE.TOTAL_PROFIT_HEADER.value)))
+						.build();
 				
 				orders.add(order);
 			}

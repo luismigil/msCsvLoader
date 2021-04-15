@@ -15,24 +15,21 @@ public class Orders {
 		super();
 	}
 
-	public Orders(Long orderId, String region, String country, String itemType, String salesChannel,
-			String orderPriority, Date orderDate, Date shipDate, Integer unitsSold, Float unitPrice,
-			Float unitCost, Float totalRevenue, Float totalCost, Float totalProfit) {
-		super();
-		this.orderId = orderId;
-		this.region = region;
-		this.country = country;
-		this.itemType = itemType;
-		this.salesChannel = salesChannel;
-		this.orderPriority = orderPriority;
-		this.orderDate = orderDate;
-		this.shipDate = shipDate;
-		this.unitsSold = unitsSold;
-		this.unitPrice = unitPrice;
-		this.unitCost = unitCost;
-		this.totalRevenue = totalRevenue;
-		this.totalCost = totalCost;
-		this.totalProfit = totalProfit;
+	public Orders(Builder builder) {
+		this.orderId = builder.orderId;
+		this.region = builder.region;
+		this.country = builder.country;
+		this.itemType = builder.itemType;
+		this.salesChannel = builder.salesChannel;
+		this.orderPriority = builder.orderPriority;
+		this.orderDate = builder.orderDate;
+		this.shipDate = builder.shipDate;
+		this.unitsSold = builder.unitsSold;
+		this.unitPrice = builder.unitPrice;
+		this.unitCost = builder.unitCost;
+		this.totalRevenue = builder.totalRevenue;
+		this.totalCost = builder.totalCost;
+		this.totalProfit = builder.totalProfit;
 	}
 
 	@Id
@@ -188,5 +185,93 @@ public class Orders {
 
 	public void setTotalProfit(Float totalProfit) {
 		this.totalProfit = totalProfit;
+	}
+
+	public static class Builder{
+		private final long orderId;
+		private String region;
+		private String country;
+		private String itemType;
+		private String salesChannel;
+		private String orderPriority;
+		private Date orderDate;
+		private Date shipDate;
+		private Integer unitsSold;
+		private Float unitPrice;
+		private Float unitCost;
+		private Float totalRevenue;
+		private Float totalCost;
+		private Float totalProfit;
+
+		public Builder(long orderId) { this.orderId = orderId; }
+
+		public Builder region(String region) {
+			this.region = region;
+			return this;
+		}
+
+		public Builder country(String country) {
+			this.country = country;
+			return this;
+		}
+
+		public Builder itemType(String itemType) {
+			this.itemType = itemType;
+			return this;
+		}
+
+		public Builder salesChannel(String salesChannel) {
+			this.salesChannel = salesChannel;
+			return this;
+		}
+
+		public Builder orderPriority(String orderPriority) {
+			this.orderPriority = orderPriority;
+			return this;
+		}
+
+		public Builder orderDate(Date orderDate) {
+			this.orderDate = orderDate;
+			return this;
+		}
+
+		public Builder shipDate(Date shipDate) {
+			this.shipDate = shipDate;
+			return this;
+		}
+
+		public Builder unitsSold(Integer unitsSold) {
+			this.unitsSold = unitsSold;
+			return this;
+		}
+
+		public Builder unitPrice(Float unitPrice) {
+			this.unitPrice = unitPrice;
+			return this;
+		}
+
+		public Builder unitCost(Float unitCost) {
+			this.unitCost = unitCost;
+			return this;
+		}
+
+		public Builder totalRevenue(Float totalRevenue) {
+			this.totalRevenue = totalRevenue;
+			return this;
+		}
+
+		public Builder totalCost(Float totalCost) {
+			this.totalCost = totalCost;
+			return this;
+		}
+
+		public Builder totalProfit(Float totalProfit) {
+			this.totalProfit = totalProfit;
+			return this;
+		}
+
+		public Orders build(){
+			return new Orders(this);
+		}
 	}
 }
