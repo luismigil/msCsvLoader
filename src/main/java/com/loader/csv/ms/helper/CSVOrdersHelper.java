@@ -34,7 +34,7 @@ public class CSVOrdersHelper {
 						.country(csvRecord.get(CSVFILE.COUNTRY_HEADER.value))
 						.itemType(csvRecord.get(CSVFILE.ITEM_TYPE_HEADER.value))
 						.salesChannel(csvRecord.get(CSVFILE.SALES_CHANNEL_HEADER.value))
-						.orderPriority(CSVFILE.ORDER_PRIORITY_HEADER.value)
+						.orderPriority(csvRecord.get(CSVFILE.ORDER_PRIORITY_HEADER.value))
 						.orderDate(sdf.parse(csvRecord.get(CSVFILE.ORDER_DATE_HEADER.value)))
 						.shipDate(sdf.parse(csvRecord.get(CSVFILE.SHIP_DATE_HEADER.value)))
 						.unitsSold(Integer.parseInt(csvRecord.get(CSVFILE.UNITS_SOLD_HEADER.value)))
